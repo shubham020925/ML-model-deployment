@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 #--- PAGE CONFIG---
-st.set_page_config(page_title="Iris Classifier", page_icon="")
+st.set_page_config(page_title="Iris Classifier", page_icon="🌸")
 
 #--- LOAD THE TRAINED MODEL
 @st.cache_resource
@@ -16,7 +16,14 @@ def load_model():
     with open(model_path, 'rb') as file:
       return pickle.load(file)
   else:
-    st.error("Model file '(model_path)' not found!")
+    st.error(f"Model file '{model_path}' not found!")
     return None
 
 model = load_model()
+
+# UI INTERFACE
+st.title("🌸 Iris Species Predictor")
+st.markdown("""This app uses a **Logistic Regression**  model to predict the species of an Iris flower based on its physical measurements.""")
+
+# sidebar for user inputs
+st.sidebar.header("Input Floral Features")
